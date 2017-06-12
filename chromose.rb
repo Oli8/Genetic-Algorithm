@@ -1,3 +1,5 @@
+ALPHABET = [*'a'..'z', *'A'..'Z']
+
 class Chromosome
 	
 	attr_reader :value
@@ -15,6 +17,10 @@ class Chromosome
 		match.fdiv(@value.size)
 	end
 
+	def mutate
+		@value[rand(0...@value.size)] = ALPHABET.sample
+	end
+
 end
 
 def random_string(size)
@@ -28,4 +34,6 @@ end
 
 c = Chromosome.new(7)
 p c.value
-p c.score("olivier")
+#p c.score("olivier")
+c.mutate
+p c.value
