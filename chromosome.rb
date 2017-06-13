@@ -1,12 +1,10 @@
-ALPHABET = [*'a'..'z', *'A'..'Z']
-
 class Chromosome
 	
 	attr_reader :value
 
 	def initialize(size, value = false)
 		@size = size
-		@value = value || random_string(size)
+		@value = value || Genetic_algo.random_string(size)
 	end
 
 	def score(solution)
@@ -18,7 +16,7 @@ class Chromosome
 	end
 
 	def mutate
-		@value[rand(0...@value.size)] = ALPHABET.sample
+		@value[rand(0...@value.size)] = Genetic_algo::ALPHABET.sample
 	end
 
 	def crossover(chromosome)
@@ -28,14 +26,6 @@ class Chromosome
 	end
 end
 
-def random_string(size)
-	output = ""
-	size.times do 
-		output += ALPHABET.sample
-	end
-	output
-end 
-
-c = Chromosome.new(7)
-p c.value
-c.crossover('azertyu')
+#c = Chromosome.new(7)
+#p c.value
+#c.crossover('azertyu')
