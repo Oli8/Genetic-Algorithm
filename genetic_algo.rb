@@ -27,6 +27,21 @@ class Genetic_algo
 		best_chromosomes + population_sorted[(@population_size * selected).round..-1].take((@population_size * randomly_selected).round)
 	end
 
+	def generation
+		selected = selection
+		children = []
+
+		while (selected + children).size < @population_size
+			children << selected.sample.crossover(selected.sample.value)
+		end
+
+		generation = selected + children
+
+		[*0...@population_size].shuffle.take((@population_size * 0.1).round).each{|k| generation[k].mutate!}
+
+		generation
+	end
+
 	def self.random_string(size)
 		output = ""
 		size.times do
