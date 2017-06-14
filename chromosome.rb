@@ -10,6 +10,7 @@ class Chromosome
 	def score(solution)
 		match = 0
 		@value.chars.each_with_index{ |letter, key|
+			# account for misplaced letter ?
 			match += letter == solution[key] ? 1 : 0
 		}
 		match.fdiv(@value.size)
@@ -24,8 +25,5 @@ class Chromosome
 		half = @size / 2
 		(@value.chars.shuffle.take(half) + chromosome.chars.shuffle.take(half.even? ? half : half + 1)).join
 	end
-end
 
-#c = Chromosome.new(7)
-#p c.value
-#c.crossover('azertyu')
+end
