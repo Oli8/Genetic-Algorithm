@@ -17,13 +17,11 @@ class Chromosome
 	end
 
 	def mutate!
-		@value[rand(0...@value.size)] = Genetic_algo::ALPHABET.sample
+		@value[rand(0...@size)] = Genetic_algo::ALPHABET.sample
 	end
 
 	def crossover(chromosome)
-		# @value[0..@size / 2 - 1] + chromosome[@size / 2..-1]
-		half = @size / 2
-		self.class.new(@size, (@value.chars.shuffle.take(half) + chromosome.chars.shuffle.take(half.even? ? half : half + 1)).join)
+		self.class.new(@size, @value[0..@size / 2 - 1] + chromosome[@size / 2..-1])
 	end
 
 end
