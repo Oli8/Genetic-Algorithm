@@ -10,8 +10,8 @@ class Genetic_algo
 	end
 
 	def run
-		generation_number = 1
 		create_population
+		generation_number = 1
 
 		while !solution_found do
 			puts "Generation #{generation_number}... -> #{best_match.value}"
@@ -20,9 +20,9 @@ class Genetic_algo
 		end
 
 		puts "Solution #{@solution} found in #{generation_number} generations."
-
 	end
 
+	private
 	def create_population
 		@population_size.times do
 			@population << Chromosome.new(@size)
@@ -55,7 +55,6 @@ class Genetic_algo
 
 	def best_match
 		@population.max_by{|chrom| chrom.score(@solution)}
-
 	end
 
 	def self.random_string(size)

@@ -10,7 +10,6 @@ class Chromosome
 	def score(solution)
 		match = 0
 		@value.chars.each_with_index{ |letter, key|
-			# account for misplaced letter ?
 			match += letter == solution[key] ? 1 : 0
 		}
 		match.fdiv(@value.size)
