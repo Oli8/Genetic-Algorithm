@@ -10,7 +10,11 @@ class Chromosome
 	def score(solution)
 		match = 0
 		@value.chars.each_with_index{ |letter, key|
-			match += letter == solution[key] ? 1 : 0
+			if letter == solution[key]
+				match += 1
+			elsif solution.include?(letter)
+				match += 0.25
+			end
 		}
 		match.fdiv(@value.size)
 	end
