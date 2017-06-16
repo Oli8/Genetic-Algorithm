@@ -4,7 +4,7 @@ My implementation of a genetic algorithm to find a secret string.
 
 ## Usage
 
-As done in the main.rb file, require botch classes then launch the program:
+As done in the main.rb file, require both classes then launch the program:
 ```ruby
 require_relative 'genetic_algo'
 require_relative 'chromosome'
