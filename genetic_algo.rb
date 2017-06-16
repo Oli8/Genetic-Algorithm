@@ -1,3 +1,5 @@
+require 'Benchmark'
+
 class Genetic_algo
 
 	ALPHABET = [*'a'..'z', *'A'..'Z']
@@ -13,13 +15,15 @@ class Genetic_algo
 		create_population
 		generation_number = 1
 
-		while !solution_found do
-			puts "Generation #{generation_number}... -> #{best_match.value}"
-			@population = generation
-			generation_number += 1
-		end
+		time = Benchmark.measure{
+			while !solution_found do
+				puts "Generation #{generation_number}... -> #{best_match.value}"
+				@population = generation
+				generation_number += 1
+			end
+		}
 
-		puts "Solution #{@solution} found in #{generation_number} generations."
+		puts "Solution #{@solution} found after #{generation_number} generations in #{time.real.round(2)} seconds."
 	end
 
 	private
