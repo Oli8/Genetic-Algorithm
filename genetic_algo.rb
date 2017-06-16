@@ -1,4 +1,4 @@
-require 'Benchmark'
+require 'benchmark'
 
 class Genetic_algo
 
