@@ -62,11 +62,7 @@ class Genetic_algo
 	end
 
 	def self.random_string(size)
-		output = ""
-		size.times do
-			output += ALPHABET.sample
-		end
-		output
+		size.times.collect{ALPHABET.sample}.join
 	end 
 
 end
