@@ -11,3 +11,5 @@ require_relative 'chromosome'
 
 Genetic_algo.new('tryTofiNDTHIsreALLYlongSTring').run
 ```
+
+Inspired by [Sablier's tutorial](https://tech.io/playgrounds/334/genetic-algorithms/content/algorithm).
