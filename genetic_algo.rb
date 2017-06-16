@@ -34,7 +34,7 @@ class Genetic_algo
 	end
 
 	def selection(selected = 0.4, randomly_selected = 0.1)
-		population_sorted = @population.sort_by{|chrom| chrom.score(@solution)}.reverse
+		population_sorted = @population.sort_by{|chrom| -chrom.score(@solution)}
 		best_chromosomes = population_sorted.take((@population_size * selected).round)
 		best_chromosomes + population_sorted[(@population_size * selected).round..-1].shuffle.take((@population_size * randomly_selected).round)
 	end
