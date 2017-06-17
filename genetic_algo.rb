@@ -28,9 +28,7 @@ class Genetic_algo
 
 	private
 	def create_population
-		@population_size.times do
-			@population << Chromosome.new(@size)
-		end
+		@population = @population_size.times.collect{Chromosome.new(@size)}
 	end
 
 	def selection(selected = 0.4, randomly_selected = 0.1)
