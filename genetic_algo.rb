@@ -4,10 +4,11 @@ class Genetic_algo
 
 	ALPHABET = [*'a'..'z', *'A'..'Z']
 
-	def initialize(solution, population_size = 100)
+	def initialize(solution, population_size)
+		abort "Solution must contains only letters." unless solution.match(/^[[:alpha:]]+$/)
 		@solution = solution
 		@size = solution.size
-		@population_size = population_size
+		@population_size = population_size.to_i > 1 ? population_size.to_i : 100
 		@population = []
 	end
 
