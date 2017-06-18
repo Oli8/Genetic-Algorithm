@@ -16,15 +16,15 @@ class Genetic_algo
 		create_population
 		generation_number = 1
 
-		time = Benchmark.measure{
+		time = Benchmark.realtime{
 			while !solution_found do
 				puts "Generation #{generation_number}... -> #{best_match.value}"
 				@population = generation
 				generation_number += 1
 			end
-		}
+		}.round(2)
 
-		puts "Solution #{@solution} found after #{generation_number} generations in #{time.real.round(2)} seconds."
+		puts "Solution #{@solution} found after #{generation_number} generations in #{time} seconds."
 	end
 
 	private
