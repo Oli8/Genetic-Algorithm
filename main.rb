@@ -8,16 +8,16 @@ optparse = OptionParser.new do |opts|
 	opts.banner = "Usage: ruby main.rb [options] solution"
 
 	options[:population] = 100
-	opts.on( '-p', '--population SIZE', Integer, 'Set the population size.') do |size|
+	opts.on( '-p', '--population SIZE', Integer, 'Set the population size to SIZE.') do |size|
 		options[:population] = size
 	end
 
-	options[:max_time] = false
-	opts.on( '-m', '--max_time S', Float, 'Stop the process after number of seconds set.') do |s|
-		options[:max_time] = s
+	options[:max_time] = 0
+	opts.on( '-m', '--max_time SECONDS', Float, 'Stop the process after SECONDS number of seconds set.') do |seconds|
+		options[:max_time] = seconds
 	end
 
-	opts.on( '-h', '--help', 'Display help.' ) do
+	opts.on( '-h', '--help', 'Display help.') do
 		puts opts
 		exit
 	end

@@ -9,7 +9,7 @@ class Genetic_algo
 		@solution = solution
 		@size = solution.size
 		@population_size = population_size.to_i > 1 ? population_size.to_i : 100
-		@max_time = max_time.to_f
+		@max_time = max_time
 		@population = []
 	end
 
@@ -22,7 +22,7 @@ class Genetic_algo
 			puts "Generation #{generation_number}... -> #{best_match.value}"
 			@population = generation
 			generation_number += 1
-			abort "Time's up. Best solution: #{best_match.value}" if @max_time != false && Time.now - start_time > @max_time
+			abort "Time's up. Best solution: #{best_match.value}" if @max_time != 0 && Time.now - start_time > @max_time
 		end
 
 		puts "Solution #{@solution} found after #{generation_number} generations in #{Time.now - start_time} seconds."
