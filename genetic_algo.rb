@@ -4,27 +4,28 @@ class Genetic_algo
 
 	ALPHABET = [*'a'..'z', *'A'..'Z']
 
-	def initialize(solution, population_size)
+	def initialize(solution, population_size, max_time)
 		abort "Solution must contains only letters." unless solution.match(/^[[:alpha:]]+$/)
 		@solution = solution
 		@size = solution.size
 		@population_size = population_size.to_i > 1 ? population_size.to_i : 100
+		@max_time = max_time.to_f
 		@population = []
 	end
 
 	def run
+		start_time = Time.now
 		create_population
 		generation_number = 1
 
-		time = Benchmark.realtime{
-			while !solution_found do
-				puts "Generation #{generation_number}... -> #{best_match.value}"
-				@population = generation
-				generation_number += 1
-			end
-		}.round(2)
+		while !solution_found do
+			puts "Generation #{generation_number}... -> #{best_match.value}"
+			@population = generation
+			generation_number += 1
+			abort "Time's up. Best solution: #{best_match.value}" if @max_time != false && Time.now - start_time > @max_time
+		end
 
-		puts "Solution #{@solution} found after #{generation_number} generations in #{time} seconds."
+		puts "Solution #{@solution} found after #{generation_number} generations in #{Time.now - start_time} seconds."
 	end
 
 	private

@@ -13,8 +13,8 @@ optparse = OptionParser.new do |opts|
 	end
 
 	options[:max_time] = false
-	opts.on( '-m', '--max_time MS', Integer, 'Stop the process after number of milliseconds set.') do |ms|
-		options[:max_time] = ms
+	opts.on( '-m', '--max_time S', Float, 'Stop the process after number of seconds set.') do |s|
+		options[:max_time] = s
 	end
 
 	opts.on( '-h', '--help', 'Display help.' ) do
@@ -23,4 +23,4 @@ optparse = OptionParser.new do |opts|
 	end
 end.parse!
 
-Genetic_algo.new(ARGV.last || abort("You must provide a solution."), options[:population]).run
+Genetic_algo.new(ARGV.last || abort("You must provide a solution."), options[:population], options[:max_time]).run
