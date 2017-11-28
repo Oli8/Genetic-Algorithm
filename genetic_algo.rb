@@ -54,7 +54,7 @@ class Genetic_algo
 	end
 
 	def solution_found
-		@population.select{|chrom| chrom.value == @solution}.size > 0
+		@population.any?{|chrom| chrom.value == @solution}
 	end
 
 	def best_match
